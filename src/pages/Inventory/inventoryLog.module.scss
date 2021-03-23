@@ -1,0 +1,14 @@
+.actionWrapper{
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.btn{
+
+}
+.searchWrapper{
+  display: flex;
+  .selection{
+    padding: 0 10px 0 5px;
+  }
+}

@@ -1,18 +1,17 @@
-import React,{useEffect,useState,useRef} from 'react'
+import React,{useEffect,useState} from 'react'
 import { Table } from 'antd';
 import styles from './inventoryTable.module.scss'
 import axios from 'axios'
 import 'antd/dist/antd.css';
 import {Input,Button, Modal} from "antd/es";
-
-
+import {useFetch} from './getDepotList'
 
 const InvenTable = ()=>{
-
   const editHandler=(record)=>{
     setShowModal(true)
     setTitle("編輯倉庫")
     setDepotName(record.name)
+    setId(record.id)
   }
 
 
@@ -35,24 +34,24 @@ const InvenTable = ()=>{
       key: 'operation',
       align: 'center',
       width: 100,
-      render: (text, record) => <div><a onClick={() => editHandler(text,record)}>編輯</a><span> </span><a>刪除</a></div>,
+      render: (text, record) => <div>{record.count !== 0 ? <><a onClick={() => editHandler(text, record)}>編輯</a><a>刪除</a></>:
+        <><a disabled>編輯</a><a disabled>刪除</a></>}</div>,
     },
   ];
 
 
   const [useInfo, setUser]=useState({userName: 'admin', password: '123'})
-  const [tableData, setTableData] = useState([])
+  // const [tableData, setTableData] = useState([])
   const [showModal, setShowModal] = useState(false)
   const [name, setDepotName] = useState("")
   const [title, setTitle] = useState("")
+  const [Id, setId] = useState("")
 
-  useEffect(()=>{
+  const tableData = useFetch('erp/productDepot/productDepotList?'+'depotName')
+  console.log(tableData,"倉庫")
+  // useEffect(()=>{
 
-    axios.get('erp/productDepot/productDepotList?'+'depotName')
-      .then(res=>{
-        setTableData(res.data)
-      })
-  },[])
+  // },[showModal])
 
 
   const submitHandler=()=>{
@@ -73,9 +72,8 @@ const InvenTable = ()=>{
           setDepotName("")
         })
     }else {
-      axios.put('erp/productDepot/updateProductDepot', {name:name})
-        .then(res=>{
-          console.log(res)
+      axios.put('erp/productDepot/updateProductDepot', {name:name,id:Id})
+        .then(()=>{
           setShowModal(false)
           setDepotName("")
         })
