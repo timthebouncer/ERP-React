@@ -4,7 +4,7 @@ import styles from './inventoryTable.module.scss'
 import axios from 'axios'
 import 'antd/dist/antd.css';
 import {Input,Button, Modal} from "antd/es";
-import {useFetch} from './getDepotList'
+import {useFetch} from '../getDepotList'
 
 const InvenTable = ()=>{
   const editHandler=(record)=>{

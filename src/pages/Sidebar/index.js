@@ -10,9 +10,9 @@ import {
   TeamOutlined,
   UserOutlined,
 } from '@ant-design/icons';
-import InvenTable from '../Inventory/index'
-import InventoryLog from '../Inventory/inventoryLog'
-import InventoryList from "../Inventory/inventoryList";
+import InvenTable from '../Inventory/inventoryTable'
+import InventoryLog from '../Inventory/inventoryLog/inventoryLog'
+import InventoryList from "../Inventory/inventoryList/inventoryList";
 import DistributeInfo from '../Distribute/distributeInfo'
 import CustomerList from '../Customer/customerList'
 import CustomerIndex from "../Customer/customerIndex";
