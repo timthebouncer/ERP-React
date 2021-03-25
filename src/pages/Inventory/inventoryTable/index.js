@@ -7,12 +7,6 @@ import {Input,Button, Modal} from "antd/es";
 import {useFetch} from '../getDepotList'
 
 const InvenTable = ()=>{
-  const editHandler=(record)=>{
-    setShowModal(true)
-    setTitle("編輯倉庫")
-    setDepotName(record.name)
-    setId(record.id)
-  }
 
 
   const columns = [
@@ -39,19 +33,20 @@ const InvenTable = ()=>{
     },
   ];
 
+  const editHandler=(record)=>{
+    setShowModal(true)
+    setTitle("編輯倉庫")
+    setDepotName(record.name)
+    setId(record.id)
+  }
 
   const [useInfo, setUser]=useState({userName: 'admin', password: '123'})
-  // const [tableData, setTableData] = useState([])
   const [showModal, setShowModal] = useState(false)
   const [name, setDepotName] = useState("")
   const [title, setTitle] = useState("")
   const [Id, setId] = useState("")
 
   const tableData = useFetch('erp/productDepot/productDepotList?'+'depotName')
-  console.log(tableData,"倉庫")
-  // useEffect(()=>{
-
-  // },[showModal])
 
 
   const submitHandler=()=>{
