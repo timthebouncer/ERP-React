@@ -1,0 +1,21 @@
+.listAction{
+  display: flex;
+  justify-content: space-between;
+}
+.datePicker{
+  //display: flex;
+  //justify-content: flex-end;
+}
+.searchWrapper{
+  display: flex;
+  .title{
+    span{
+      margin-right: 5px;
+    }
+    line-height: 2;
+    margin-right: 15px;
+  }
+  .searchBtn{
+    margin-left: 10px;
+  }
+}

@@ -37,12 +37,13 @@ const InventoryLog = () =>{
   const [productName, setProductName] = useState('')
   const [depotId, setDepotId] = useState('')
   const [pageNumber, setPageNumber] = useState(1)
-  const [pageSize, setPageSize] = useState(15)
+  const [pageSize, setPageSize] = useState(10)
   const [TableList, setTableList] = useState([])
   const [depotList, setDepotList] = useState([])
   const [goodsName, setName] = useState("")
 
   const searchName = useCallback((e)=>{
+    console.log(e)
     setName(e)
     axios.get('erp/inventory/stockList?productName=' +
       e +
